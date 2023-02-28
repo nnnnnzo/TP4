@@ -29,9 +29,24 @@ namespace TP4.Controllers
 
         // GET: api/Utilisateurs/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Utilisateur>> GetUtilisateur(int id)
+        public async Task<ActionResult<Utilisateur>> GetUtilisateurById(int id)
         {
             var utilisateur = await _context.Utilisateurs.FindAsync(id);
+
+            if (utilisateur == null)
+            {
+                return NotFound();
+            }
+
+            return utilisateur;
+        }
+
+
+        // GET: api/Utilisateur/email/email@email.com
+        [HttpGet("/api/Utilisateur/GetByEmail/{email}")]
+        public async Task<ActionResult<Utilisateur>> GetUtilisateurByEmail(string email)
+        {
+            Utilisateur utilisateur = await _context.Utilisateurs.Where(u => u.Mail.ToUpper() == email.ToUpper()).FirstAsync();
 
             if (utilisateur == null)
             {
