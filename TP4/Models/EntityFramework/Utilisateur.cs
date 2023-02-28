@@ -23,12 +23,12 @@ namespace TP4.Models.EntityFramework
         [StringLength(50)]
         public String? Prenom { get; set; }
 
-        [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "Num de tel pas bon chakal")]
+        [RegularExpression(@"^0[0-9]{9}$", ErrorMessage = "Numéro de téléphone non valide")]
         [Column("utl_mobile", TypeName = "char(10)")]
         public String? Mobile { get; set; }
 
         [Required]
-        [EmailAddress(ErrorMessage = "Pas bon mon zouzou")]
+        [EmailAddress]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "La longueur d’un email doit être comprise entre 6 et 100 caractères.")]
         [Column("utl_mail")]
         public String Mail { get; set; } = null!;
