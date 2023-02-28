@@ -28,8 +28,8 @@ namespace TP4.Models.EntityFramework
         public String? Mobile { get; set; }
 
         [Required]
-        [EmailAddress]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "La longueur d’un email doit être comprise entre 6 et 100 caractères.")]
+        [EmailAddress(ErrorMessage = "La longueur d’un email doit être comprise entre 6 et 100 caractères")]
+        [StringLength(100, MinimumLength = 6)]
         [Column("utl_mail")]
         public String Mail { get; set; } = null!;
 
